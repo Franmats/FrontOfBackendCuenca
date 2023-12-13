@@ -1,0 +1,59 @@
+
+/* PRODUCTS */
+/* Estilos generales para la paginación */
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-left: 250px;
+    margin-right: 250px;
+  }
+  .container .card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .container .card1 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 250px;
+    height: 140px;
+  
+  }
+  .container .card2 {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 250px;
+    height: 100px;
+  
+  }
+  .container .card .image img {
+    
+    width: 100px;
+    height: 100px;
+  }
+  .pagination {
+    text-align: center;
+  }
+
+  
+/* Estilos para los enlaces de paginación */
+.pagination-link {
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: #007BFF; /* Color de fondo del enlace */
+    color: #fff; /* Color del texto del enlace */
+    text-decoration: none;
+    border-radius: 5px;
+    margin: 5px;
+    transition: background-color 0.3s ease; /* Transición de color al pasar el mouse */
+  }
+  
+  .pagination-link:hover {
+    background-color: #0056b3; /* Color de fondo al pasar el mouse */
+  }
+  

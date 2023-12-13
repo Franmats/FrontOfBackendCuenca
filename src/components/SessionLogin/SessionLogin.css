@@ -1,0 +1,128 @@
+.center2 {
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .login-container {
+    font-family: 'Nunito Sans', sans-serif;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+  }
+  
+/*   h2 {
+    margin-bottom: 20px;
+  } */
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  label {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  
+  button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+
+  button a {
+    text-decoration: none;
+    color: white;
+  }
+
+  @media (max-width: 768px) {
+    .center {
+        justify-content: center;
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+    header .containerfull{
+        display: none;
+    }
+
+    header .containerphone{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        font-family: 'Nunito Sans', sans-serif;
+    }
+
+    header .containerphone .top{
+        display: grid;
+        margin-top:10px ;
+        grid-template-columns: 2fr 2fr;
+        flex-direction: row;
+    }
+
+
+    header .containerphone .top .items{
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: right;
+        padding-bottom: 0px;
+        
+    }
+    header .containerphone .top .items div {
+      height: 30px;
+      width: 30px;
+    }
+    header .containerphone .top .items div img {
+        height: 100%;
+        width: 100%;
+    }
+    header .containerphone .buttom {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: stretch;
+        text-align: center;
+        height: 20px;
+        font-size: 10px;
+        background-color: black;
+        color: white;
+    }
+
+    .center2 {
+      display: flex;
+      
+      height: 500px;
+    }
+
+    form {
+      font-size: 15px;
+    }
+
+    .login-container{
+      font-size: 15px;
+      width: 400px;
+    }
+}
