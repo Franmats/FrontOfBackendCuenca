@@ -10,11 +10,12 @@ export const Productsviewall =()=> {
     // Función para cargar datos desde el servidor
     const fetchData = async () => {
       try {
-        const response = await fetch(`backendfinalcuenca-production.up.railway.app/api/products/?page=${page}`);
+        const response = await fetch(`https://backendfinalcuenca-production.up.railway.app/api/products/?page=${page}`);
         if (!response.ok) {
           throw new Error('Respuesta no exitosa');
         }
         const datos = await response.json();
+        console.log(datos)
         setData(datos.docs);
         setTotalPages(datos.info.totalPages);
       } catch (error) {
