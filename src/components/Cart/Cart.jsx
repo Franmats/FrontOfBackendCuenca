@@ -21,7 +21,7 @@ export const Cart = ()=> {
       try {
         // Obtener el token de la cookie
         const token = await cookiesStractor()
-        const response = await fetch('http://localhost:8080/api/session/profile', {
+        const response = await fetch('backendfinalcuenca-production.up.railway.app/api/session/profile', {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
@@ -32,7 +32,7 @@ export const Cart = ()=> {
 
         if (response.ok) {
           const userData = await response.json();
-          const response2 = await fetch(`http://localhost:8080/api/cart/${userData.user.cart}`, {
+          const response2 = await fetch(`backendfinalcuenca-production.up.railway.app/api/cart/${userData.user.cart}`, {
             method: 'GET',
             headers: {
               'Content-Type': 'application/json',
@@ -59,7 +59,7 @@ export const Cart = ()=> {
   const deleteProduct = async (cid,id) => {
     try {
       console.log('Delete button clicked');
-      const deleteProd = await fetch(`http://localhost:8080/api/cart/${cid}/product/${id}`, {
+      const deleteProd = await fetch(`backendfinalcuenca-production.up.railway.app/api/cart/${cid}/product/${id}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',

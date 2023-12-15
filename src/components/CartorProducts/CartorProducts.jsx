@@ -25,7 +25,7 @@ export const CartorProducts = ()=> {
       try {
         // Obtener el token de la cookie
         const token = await cookiesStractor()
-        const response = await fetch(`http://localhost:8080/api/cart/${cid}/product/${pid}/cant/${b}`, {
+        const response = await fetch(`backendfinalcuenca-production.up.railway.app/api/cart/${cid}/product/${pid}/cant/${b}`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',

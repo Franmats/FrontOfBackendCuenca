@@ -28,7 +28,7 @@ export const Tickets = () => {
           return; // Si el componente ya no está montado, evitamos hacer más solicitudes
         }
 
-        const response = await fetch('http://localhost:8080/api/session/profile', {
+        const response = await fetch('backendfinalcuenca-production.up.railway.app/api/session/profile', {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',

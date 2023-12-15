@@ -10,7 +10,7 @@ export const SessionLogin = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch('http://localhost:8080/api/session/login', {
+      const response = await fetch('backendfinalcuenca-production.up.railway.app/api/session/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

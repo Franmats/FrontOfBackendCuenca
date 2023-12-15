@@ -20,7 +20,7 @@ export const SessionProfileAdmin = () => {
       try {
         // Obtener el token de la cookie
         const token = await cookiesStractor()
-        const response = await fetch('http://localhost:8080/api/session/profile/admin', {
+        const response = await fetch('backendfinalcuenca-production.up.railway.app/api/session/profile/admin', {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',

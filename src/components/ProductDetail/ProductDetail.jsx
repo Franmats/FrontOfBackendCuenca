@@ -24,7 +24,7 @@ export const ProductDetail = () => {
         const token = await cookiesStractor();
 
         // Fetch user profile data
-        const response1 = await fetch('http://localhost:8080/api/session/profile', {
+        const response1 = await fetch('backendfinalcuenca-production.up.railway.app/api/session/profile', {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
@@ -39,7 +39,7 @@ export const ProductDetail = () => {
           setData((prevData) => ({ ...prevData, user: userData.user }));
 
           // Fetch product data
-          const response2 = await fetch(`http://localhost:8080/api/products/product/${id}`, {
+          const response2 = await fetch(`backendfinalcuenca-production.up.railway.app/api/products/product/${id}`, {
             method: 'GET',
             headers: {
               'Content-Type': 'application/json',

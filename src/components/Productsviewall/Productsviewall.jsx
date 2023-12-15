@@ -10,7 +10,7 @@ export const Productsviewall =()=> {
     // Función para cargar datos desde el servidor
     const fetchData = async () => {
       try {
-        const response = await fetch(`http://localhost:8080/api/products/?page=${page}`);
+        const response = await fetch(`backendfinalcuenca-production.up.railway.app/api/products/?page=${page}`);
         if (!response.ok) {
           throw new Error('Respuesta no exitosa');
         }

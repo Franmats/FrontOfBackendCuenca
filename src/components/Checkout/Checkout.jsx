@@ -22,7 +22,7 @@ export const Checkout = ()=> {
       try {
         // Obtener el token de la cookie
         const token = await cookiesStractor()
-        const response = await fetch('http://localhost:8080/api/session/profile', {
+        const response = await fetch('backendfinalcuenca-production.up.railway.app/api/session/profile', {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
@@ -33,7 +33,7 @@ export const Checkout = ()=> {
 
         if (response.ok) {
           const userData = await response.json();
-          const response2 = await fetch(`http://localhost:8080/api/cart/${userData.user.cart}`, {
+          const response2 = await fetch(`backendfinalcuenca-production.up.railway.app/api/cart/${userData.user.cart}`, {
             method: 'GET',
             headers: {
               'Content-Type': 'application/json',
@@ -61,7 +61,7 @@ export const Checkout = ()=> {
             cart:id
         }
         console.log("iddds",cartId)
-        const response2 = await fetch(`http://localhost:8080/api/checkout`, {
+        const response2 = await fetch(`backendfinalcuenca-production.up.railway.app/api/checkout`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json', 
