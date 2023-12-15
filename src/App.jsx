@@ -11,6 +11,11 @@ import { CartorProducts } from './components/CartorProducts/CartorProducts.jsx';
 import { Cart } from './components/Cart/Cart.jsx';
 import { Checkout } from './components/Checkout/Checkout.jsx';
 import { Tickets } from './components/Tickets/Tickets.jsx';
+import { Productsviewall } from './components/Productsviewall/Productsviewall.jsx';
+import { SessionDelete } from './components/SessionDelete/SessionDelete.jsx';
+import { SessionProfileAdmin } from './components/SessionProfileAdmin/SessionProfileAdmin.jsx';
+import { SessionRestore } from './components/SessionRestore/SessionRestore.jsx';
+import { SessionUserAuth } from './components/SessionUserAuth/SessionUserAuth.jsx';
 
 function App() {
   return (
@@ -23,12 +28,18 @@ function App() {
             <Route path='/api/session' element={<NavigationSession/>}/> 
             <Route path='/api/session/login' element={<SessionLogin/>}/> 
             <Route path='/api/session/profile' element={<SessionProfile/>}/> 
+            <Route path='/api/session/profile/admin' element={<SessionProfileAdmin/>}/> 
             <Route path='/api/session/register' element={<SessionRegister/>}/> 
+            <Route path='/api/session/delete' element={<SessionDelete/>}/> 
+            <Route path='/api/session/reset-pass' element={<SessionRestore/>}/> 
+            <Route path='/api/session/reset-auth/:token' element={<SessionUserAuth/>}/> 
+
 
             {/* <Route path='/category/:category' element={<ItemListContainer/>}/>  */}
             {/* Productos */}
-            <Route path='/api/products' element={<Productsview/>}/> 
-            <Route path='/api/products/:id' element={<ProductDetail/>}/> 
+            <Route path='/api/products' element={<Productsviewall/>}/> 
+            <Route path='/api/products/:query' element={<Productsview/>}/> 
+            <Route path='/api/products/product/:id' element={<ProductDetail/>}/> 
 
             {/* Cart */}
             <Route path='/api/cart' element={<Cart />}/> 

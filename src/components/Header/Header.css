@@ -36,6 +36,7 @@ header .containerfull .top div img {
 header .containerfull .top .navegate {
     display: flex;
     justify-items: center;
+    justify-content: center;
     text-align: center;
     flex-wrap: wrap;
 }

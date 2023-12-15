@@ -1,16 +1,24 @@
 import React, { useState } from 'react';
+import { useParams } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 
-export const SessionLogin = () => {
+export const SessionUserAuth = () => {
+
   const [formData, setFormData] = useState({
     email: '',
     password: '',
   });
+
   const [responseMessage, setResponseMessage] = useState(null);
+
+  const {token} = useParams()
+  const navigate = useNavigate()
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const response = await fetch('http://localhost:8080/api/session/login', {
+      const response = await fetch(`http://localhost:8080/api/session/pass-auth/${token}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -19,7 +27,7 @@ export const SessionLogin = () => {
         credentials: 'include',
         body: JSON.stringify(formData),
       });
-      
+
       if (response.ok) {
         const responseData = await response.json();
 
@@ -31,8 +39,10 @@ export const SessionLogin = () => {
         setResponseMessage('Error al enviar datos');
       }
     } catch (error) {
+      // Manejar errores de la solicitud.
       console.error('Error en la solicitud:', error);
       setResponseMessage('Error en la solicitud');
+      navigate("/")
     }
   };
 
@@ -56,7 +66,7 @@ export const SessionLogin = () => {
               onChange={handleChange}
               required
             />
-            <label htmlFor="password">Contraseña:</label>
+            <label htmlFor="password">Nueva Contraseña</label>
             <input
               type="password"
               id="password"
@@ -65,17 +75,15 @@ export const SessionLogin = () => {
               onChange={handleChange}
               required
             />
-            <button type="submit">Iniciar Sesión</button>
+            <button type="submit">Cambiar contraseña</button>
           </form>
-          <button>
-            <a href="/api/session/register">Registro</a>
-          </button>
-        </div>
-        {responseMessage && (
+
+          {responseMessage && (
             <div className={responseMessage.includes('Error') ? 'error-message' : 'success-message'}>
               {responseMessage}
             </div>
           )}
+        </div>
       </div>
     </div>
   );

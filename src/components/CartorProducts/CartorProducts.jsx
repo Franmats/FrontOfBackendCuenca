@@ -3,9 +3,11 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 export const CartorProducts = ()=> {
   const [data, setData] = useState({});
+  const [responseMessage, setResponseMessage] = useState(null);
   const { cid } = useParams();
   const { pid } = useParams();
   const { b } = useParams();
+
   useEffect(() => {
     const cookiesStractor = async() => {
         const cookie = window.cookieStore.get("coderCookie")
@@ -32,13 +34,18 @@ export const CartorProducts = ()=> {
           withCredentials: true
         });
         if (response.ok) {
-          const a = await response.json()
-          setData(a)
+          const responseData = await response.json();
+
+          console.log("aaaaa",responseData);
+          setResponseMessage(responseData.status);
         } else {
-          const a = await response.json()
-          setData(a)
+          const errorData = await response.json();
+          console.log('Error al enviar datos:', errorData);
+          setResponseMessage('Error al enviar datos');
         }
       } catch (error) {
+        console.error('Error en la solicitud:', error);
+        setResponseMessage('Error en la solicitud');
         console.error('Error al cargar datos:', error);
       }
     }
@@ -47,11 +54,17 @@ export const CartorProducts = ()=> {
   }, []);
     return (
       <div>
+        {responseMessage && (
+            <div className={responseMessage.includes('Error') ? 'error-message' : 'success-message'}>
+              {responseMessage}
+            </div>
+          )}
         <h1>{data.status}</h1>
-        <div>
+        
         <a href="/api/products">Seguir Comprando</a>
         <a href="/api/cart">Ir al Carrito</a>
-          </div>
+         
+     
       </div>
     );
   }

@@ -8,17 +8,20 @@ export const Header = ()=> {
                 <header>
                     <div className="containerfull">
                         <div className="top">
-                            <div className="logo"><h1>SHOP-1</h1>{/* <img src="" alt="logo"> */}</div>
+                            <div className="logo"><h1>Super-Ecommerce</h1>{/* <img src="" alt="logo"> */}</div>
                             <div className="navegate">
                             <span><a href="/api/products" >PRODUCTOS /</a></span>
-                            <span><a href ="">AUDIO /</a></span>
-                            <span><a href="">DECORACION /</a></span>
-                            <span><a href="">GRAFICA</a></span>
+                            <span><a href ="/api/products/super">SUPER / </a></span>
+                            <span><a href="/api/products/electronics">ELECTRONICA /</a></span>
+                            <span><a href="/api/products/pcescritorio">PC ESCRITORIO /</a></span>
+                            <span><a href="/api/products/notebook">NOTEBOOKS</a></span>
                             </div>
                             <div className="items">
                             <div className="search"><img src="https://firebasestorage.googleapis.com/v0/b/e-commerce-39665.appspot.com/o/search.png?alt=media&token=c932dbe5-6c81-4ab5-9ae2-9370c2ede4f4" alt="search" /></div>
                             <div className="user"><a href="/api/session"><img src="https://firebasestorage.googleapis.com/v0/b/e-commerce-39665.appspot.com/o/user.png?alt=media&token=21059657-1989-4341-8df5-3dd0e11e97e0" alt="user" /></a></div>
                             <div className="cart"><a href="/api/cart"><img src="https://firebasestorage.googleapis.com/v0/b/e-commerce-39665.appspot.com/o/cart.png?alt=media&token=88105018-7c1a-4566-ad9a-ab19f24bd4e2" alt="cart" /></a></div> 
+                            <div className="admin"><a href="/api/session/profile/admin"><img src="https://w7.pngwing.com/pngs/257/93/png-transparent-settings-gear-icon-gear-configuration-set-up-thumbnail.png" alt="admin" /></a></div> 
+                            <div className="premium"><a href="/api/session/profile/premium"><img src="https://cdn-icons-png.flaticon.com/512/3972/3972726.png" alt="premium" /></a></div> 
                             </div>
                         </div>
                     <div className="buttom">

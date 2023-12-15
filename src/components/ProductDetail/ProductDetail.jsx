@@ -2,6 +2,7 @@ import "./ProductDetail.css";
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { ItemCount } from "../ItemCount/ItemCount.jsx";
+import { useNavigate } from "react-router-dom";
 
 
 const cookiesStractor = async () => {
@@ -15,6 +16,7 @@ export const ProductDetail = () => {
   const [data, setData] = useState({});
   const [itemCount, setItemCount] = useState(1);
   const { id } = useParams();
+  const navigate= useNavigate()
 
   useEffect(() => {
     const fetchData = async () => {
@@ -37,7 +39,7 @@ export const ProductDetail = () => {
           setData((prevData) => ({ ...prevData, user: userData.user }));
 
           // Fetch product data
-          const response2 = await fetch(`http://localhost:8080/api/products/${id}`, {
+          const response2 = await fetch(`http://localhost:8080/api/products/product/${id}`, {
             method: 'GET',
             headers: {
               'Content-Type': 'application/json',
@@ -69,7 +71,7 @@ export const ProductDetail = () => {
     const b = a.textContent
     console.log("sasdas",b)
     const cartRoute = `/api/cart/${data.user.cart}/product/${data.product._id}/cant/${b}`;
-    window.location.href = cartRoute;
+    navigate(cartRoute)
   };
 
   

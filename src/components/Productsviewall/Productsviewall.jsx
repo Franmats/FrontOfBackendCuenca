@@ -1,18 +1,16 @@
-import "./Productsview.css"
+import "./Productsviewall.css"
 import React, { useState, useEffect } from 'react';
-import { useParams } from "react-router-dom";
 
-export const Productsview =()=> {
+export const Productsviewall =()=> {
   const [data, setData] = useState([]);
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
-  const {query} = useParams()
 
   useEffect(() => {
     // Función para cargar datos desde el servidor
     const fetchData = async () => {
       try {
-        const response = await fetch(`http://localhost:8080/api/products/${query}/?page=${page}`);
+        const response = await fetch(`http://localhost:8080/api/products/?page=${page}`);
         if (!response.ok) {
           throw new Error('Respuesta no exitosa');
         }

@@ -1,16 +1,18 @@
 import React, { useState } from 'react';
 
-export const SessionLogin = () => {
+export const SessionRestore = () => {
   const [formData, setFormData] = useState({
     email: '',
     password: '',
   });
+
   const [responseMessage, setResponseMessage] = useState(null);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const response = await fetch('http://localhost:8080/api/session/login', {
+      const response = await fetch('http://localhost:8080/api/session/reset-pass', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -19,7 +21,7 @@ export const SessionLogin = () => {
         credentials: 'include',
         body: JSON.stringify(formData),
       });
-      
+
       if (response.ok) {
         const responseData = await response.json();
 
@@ -31,6 +33,7 @@ export const SessionLogin = () => {
         setResponseMessage('Error al enviar datos');
       }
     } catch (error) {
+      // Manejar errores de la solicitud.
       console.error('Error en la solicitud:', error);
       setResponseMessage('Error en la solicitud');
     }
@@ -56,26 +59,15 @@ export const SessionLogin = () => {
               onChange={handleChange}
               required
             />
-            <label htmlFor="password">Contraseña:</label>
-            <input
-              type="password"
-              id="password"
-              name="password"
-              value={formData.password}
-              onChange={handleChange}
-              required
-            />
-            <button type="submit">Iniciar Sesión</button>
+            <button type="submit">Enviar Email</button>
           </form>
-          <button>
-            <a href="/api/session/register">Registro</a>
-          </button>
-        </div>
-        {responseMessage && (
+
+          {responseMessage && (
             <div className={responseMessage.includes('Error') ? 'error-message' : 'success-message'}>
               {responseMessage}
             </div>
           )}
+        </div>
       </div>
     </div>
   );

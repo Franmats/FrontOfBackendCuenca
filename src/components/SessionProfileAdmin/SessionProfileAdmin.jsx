@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-export const SessionProfile = () => {
+export const SessionProfileAdmin = () => {
   const [data, setData] = useState({});
 
   useEffect(() => {
@@ -20,7 +20,7 @@ export const SessionProfile = () => {
       try {
         // Obtener el token de la cookie
         const token = await cookiesStractor()
-        const response = await fetch('http://localhost:8080/api/session/profile', {
+        const response = await fetch('http://localhost:8080/api/session/profile/admin', {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
@@ -51,18 +51,15 @@ console.log('Error al cargar datos');
 
   return (
     <div>
-      <h1>Profile</h1>
-      <p>First Name: {data.first_name}</p>
-      <p>Last Name: {data.last_name}</p>
+      <h1>Profile :{data.role}</h1>
       <p>Age: {data.age}</p>
       <p>Email: {data.email}</p>
-      <p>cartID: {data.cart}</p>
-      <p>Role: {data.role}</p>
       <br />
-
-      <a href="/api/products">Productos</a>
-      <a href="/api/session/delete">Cerrar Sesion</a>
-    
+      <a href="/api/products/admin" > Gestion de Productos</a><br />
+      <a href="/api/carts/admin" > Gestion de Carritos</a><br />
+      <a href="/api/tickets/admin" > Gestion de Tickets</a><br />
+      <a href="/api/orders/admin"> Gestion de Ordenes</a><br />
+      <a href="/api/users/admin"> Gestion de Usuarios</a><br />
     </div>
   );
 };

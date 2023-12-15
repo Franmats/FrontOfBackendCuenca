@@ -9,6 +9,8 @@ export const SessionRegister = () => {
     password: '',
   });
 
+  const [responseMessage, setResponseMessage] = useState(null);
+
   const handleSubmit = useCallback(async (e) => {
     e.preventDefault();
 
@@ -25,16 +27,19 @@ export const SessionRegister = () => {
       });
 
       if (response.ok) {
-        console.log(response)
-        // Mostrar un mensaje de éxito
-        console.log('Front: Usuario registrado correctamente');
+        const responseData = await response.json();
+
+        console.log("aaaaa",responseData);
+        setResponseMessage(responseData.status);
       } else {
-        // Mostrar un mensaje de error
-        console.log('Front:Error al registrar el usuario');
+        const errorData = await response.json();
+        console.log('Error al enviar datos:', errorData);
+        setResponseMessage('Error al enviar datos');
       }
     } catch (error) {
-      // Manejar errores de la solicitud
-      console.error('Front: Error en la solicitud:', error);
+       // Manejar errores de la solicitud.
+       console.error('Error en la solicitud:', error);
+       setResponseMessage('Error en la solicitud');
     }
   }, [formData]);
 
@@ -55,6 +60,11 @@ export const SessionRegister = () => {
           Password: <input type="text" name="password" onChange={handleChange} />
           <button type="submit">Enviar</button>
         </form>
+        {responseMessage && (
+            <div className={responseMessage.includes('Error') ? 'error-message' : 'success-message'}>
+              {responseMessage}
+            </div>
+          )}
       </div>
     </div>
   );
