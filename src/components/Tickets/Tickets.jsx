@@ -28,7 +28,7 @@ export const Tickets = () => {
           return; // Si el componente ya no está montado, evitamos hacer más solicitudes
         }
 
-        const response = await fetch('backendfinalcuenca-production.up.railway.app/api/session/profile', {
+        const response = await fetch('https://backendfinalcuenca-production.up.railway.app/api/session/profile', {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
@@ -40,7 +40,7 @@ export const Tickets = () => {
         if (response.ok) {
           const userData = await response.json();
 
-          const response2 = await fetch(`http://localhost:8080/api/cart/${userData.user.cart}`, {
+          const response2 = await fetch(`https://backendfinalcuenca-production.up.railway.app/api/cart/${userData.user.cart}`, {
             method: 'GET',
             headers: {
               'Content-Type': 'application/json',
@@ -56,7 +56,7 @@ export const Tickets = () => {
               purchaser: userData.user.email
             };
 
-            const response3 = await fetch('http://localhost:8080/api/tickets', {
+            const response3 = await fetch('https://backendfinalcuenca-production.up.railway.app/api/tickets', {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json',

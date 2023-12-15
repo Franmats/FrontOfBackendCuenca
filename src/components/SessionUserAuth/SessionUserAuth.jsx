@@ -18,7 +18,7 @@ export const SessionUserAuth = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch(`backendfinalcuenca-production.up.railway.app/api/session/pass-auth/${token}`, {
+      const response = await fetch(`https://backendfinalcuenca-production.up.railway.app/api/session/pass-auth/${token}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

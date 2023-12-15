@@ -16,7 +16,7 @@ export const SessionRegister = () => {
 
     try {
       // Registrar un nuevo usuario
-      const response = await fetch('backendfinalcuenca-production.up.railway.app/api/session/register', {
+      const response = await fetch('https://backendfinalcuenca-production.up.railway.app/api/session/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
