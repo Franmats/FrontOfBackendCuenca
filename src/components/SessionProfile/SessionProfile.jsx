@@ -4,16 +4,15 @@ export const SessionProfile = () => {
   const [data, setData] = useState({});
 
   useEffect(() => {
-    const cookiesStractor = async() => {
-      const cookie = window.cookieStore.get("coderCookie")
-      cookie.then((value) => {
-      console.log("El valor de la cookie auth_token es:", value);
-      return value
-      }, (error) => {
-      console.log("Error al obtener el valor de la cookie auth_token:", error);
-});
-      console.log(cookie)
-      return cookie
+    const tokenStractor = async() => {
+      const stract = window.localStorage.getItem("tokenUser")
+      if(stract) {
+        const user = JSON.parse(stract)
+        console.log(user)
+        return user
+      }else {
+        console.log("error")
+      }
     }
 
     
@@ -21,7 +20,7 @@ export const SessionProfile = () => {
     const fetchData = async () => {
       try {
         // Obtener el token de la cookie
-        const token = await cookiesStractor()
+        const token = await tokenStractor()
         const response = await fetch('https://backendfinalcuenca-production.up.railway.app/api/session/profile', {
           method: 'GET',
           headers: {
