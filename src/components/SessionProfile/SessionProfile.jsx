@@ -25,7 +25,7 @@ export const SessionProfile = () => {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token.value}`
+            'Authorization': `Bearer ${token}`
           },
           withCredentials: true
         });
