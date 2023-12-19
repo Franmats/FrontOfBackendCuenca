@@ -15,6 +15,8 @@ export const SessionProfile = () => {
       console.log(cookie)
       return cookie
     }
+
+    
     // Función para cargar datos desde el servidor
     const fetchData = async () => {
       try {
@@ -26,7 +28,6 @@ export const SessionProfile = () => {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token.value}`
           },
-          mode:"cors",
           withCredentials: true
         });
 

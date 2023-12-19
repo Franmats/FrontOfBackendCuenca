@@ -6,6 +6,10 @@ export const SessionLogin = () => {
     password: '',
   });
   const [responseMessage, setResponseMessage] = useState(null);
+  const localStorageSetitem =async (item) => {
+    const set = window.localStorage.setItem("token",JSON.stringify(item.payload))
+    return set
+  }
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -15,7 +19,6 @@ export const SessionLogin = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        mode:"cors",
         credentials: 'include',
         body: JSON.stringify(formData),
       });
@@ -24,6 +27,7 @@ export const SessionLogin = () => {
         const responseData = await response.json();
 
         console.log("aaaaa",responseData);
+        localStorageSetitem(response)
         setResponseMessage(responseData.status);
       } else {
         const errorData = await response.json();
