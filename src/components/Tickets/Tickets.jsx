@@ -7,22 +7,28 @@ export const Tickets = () => {
   useEffect(() => {
     let isMounted = true;
 
-    const cookiesExtractor = async () => {
+    const tokenStractor = async() => {
       try {
-        const cookie = await window.cookieStore.get("coderCookie");
-        console.log("El valor de la cookie auth_token es:", cookie);
-
-        return cookie;
+        const storedToken = window.localStorage.getItem("tokenUser");
+    
+        if (storedToken) {
+          const user = JSON.parse(storedToken)
+          console.log("Usuario recuperado:", user)
+          return user
+        } else {
+          console.log("No se encontró un token en el Local Storage")
+          return null; 
+        }
       } catch (error) {
-        console.log("Error al obtener el valor de la cookie auth_token:", error);
+        console.error("Error al extraer el token:", error);
         return null;
       }
-    };
+    }
 
     // Función para cargar datos desde el servidor
     const fetchData = async () => {
       try {
-        const token = await cookiesExtractor();
+        const token = await tokenStractor();
 
         if (!token || !isMounted) {
           return; // Si el componente ya no está montado, evitamos hacer más solicitudes
@@ -32,7 +38,7 @@ export const Tickets = () => {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token.value}`
+            'Authorization': `Bearer ${token}`
           },
           withCredentials: true
         });
@@ -44,7 +50,7 @@ export const Tickets = () => {
             method: 'GET',
             headers: {
               'Content-Type': 'application/json',
-              'Authorization': `Bearer ${token.value}`
+              'Authorization': `Bearer ${token}`
             },
             withCredentials: true
           });

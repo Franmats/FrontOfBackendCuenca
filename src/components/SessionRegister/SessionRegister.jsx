@@ -20,7 +20,6 @@ export const SessionRegister = () => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': 'Bearer yourAccessToken'
         },
         credentials: 'include',
         body: JSON.stringify(formData),

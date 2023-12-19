@@ -5,30 +5,41 @@ import { ItemCount } from "../ItemCount/ItemCount.jsx";
 import { useNavigate } from "react-router-dom";
 
 
-const cookiesStractor = async () => {
-  const cookie = window.cookieStore.get('coderCookie');
-  const cookieValue = await cookie;
-  console.log('El valor de la cookie auth_token es:', cookieValue);
-  return cookieValue;
-};
 
 export const ProductDetail = () => {
   const [data, setData] = useState({});
   const [itemCount, setItemCount] = useState(1);
   const { id } = useParams();
   const navigate= useNavigate()
+  const tokenStractor = async() => {
+    try {
+      const storedToken = window.localStorage.getItem("tokenUser");
+  
+      if (storedToken) {
+        const user = JSON.parse(storedToken)
+        console.log("Usuario recuperado:", user)
+        return user
+      } else {
+        console.log("No se encontró un token en el Local Storage")
+        return null; 
+      }
+    } catch (error) {
+      console.error("Error al extraer el token:", error);
+      return null;
+    }
+  }
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const token = await cookiesStractor();
+        const token = await tokenStractor();
 
         // Fetch user profile data
         const response1 = await fetch('https://backendfinalcuenca-production.up.railway.app/api/session/profile', {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token.value}`,
+            'Authorization': `Bearer ${token}`,
           },
           credentials: 'include', // Use credentials here
         });
@@ -43,7 +54,7 @@ export const ProductDetail = () => {
             method: 'GET',
             headers: {
               'Content-Type': 'application/json',
-              'Authorization': `Bearer ${token.value}`,
+              'Authorization': `Bearer ${token}`,
             },
             credentials: 'include', // Use credentials here
           });

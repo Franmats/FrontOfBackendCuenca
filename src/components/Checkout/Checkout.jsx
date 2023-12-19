@@ -4,29 +4,35 @@ import React, { useState, useEffect } from 'react';
 
 export const Checkout = ()=> {
     const [data, setData] = useState({});
-    const cookiesStractor = async() => {
-      const cookie = window.cookieStore.get("coderCookie")
-      cookie.then((value) => {
-      console.log("El valor de la cookie auth_token es:", value);
-      return value
-      }, (error) => {
-      console.log("Error al obtener el valor de la cookie auth_token:", error);
-          });
-      console.log(cookie)
-      return cookie
+    const tokenStractor = async() => {
+      try {
+        const storedToken = window.localStorage.getItem("tokenUser");
+    
+        if (storedToken) {
+          const user = JSON.parse(storedToken)
+          console.log("Usuario recuperado:", user)
+          return user
+        } else {
+          console.log("No se encontró un token en el Local Storage")
+          return null; 
+        }
+      } catch (error) {
+        console.error("Error al extraer el token:", error);
+        return null;
       }
+    }
   useEffect(() => {
 
     // Función para cargar datos desde el servidor
     const fetchData = async () => {
       try {
         // Obtener el token de la cookie
-        const token = await cookiesStractor()
+        const token = await tokenStractor()
         const response = await fetch('https://backendfinalcuenca-production.up.railway.app/api/session/profile', {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token.value}`
+            'Authorization': `Bearer ${token}`
           },
           withCredentials: true
         });
@@ -37,7 +43,7 @@ export const Checkout = ()=> {
             method: 'GET',
             headers: {
               'Content-Type': 'application/json',
-              'Authorization': `Bearer ${token.value}`
+              'Authorization': `Bearer ${token}`
             },
             withCredentials: true
           });

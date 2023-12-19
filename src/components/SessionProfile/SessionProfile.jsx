@@ -5,13 +5,20 @@ export const SessionProfile = () => {
 
   useEffect(() => {
     const tokenStractor = async() => {
-      const stract = window.localStorage.getItem("tokenUser")
-      if(stract) {
-        const user = JSON.parse(stract)
-        console.log(user)
-        return user
-      }else {
-        console.log("error")
+      try {
+        const storedToken = window.localStorage.getItem("tokenUser");
+    
+        if (storedToken) {
+          const user = JSON.parse(storedToken)
+          console.log("Usuario recuperado:", user)
+          return user
+        } else {
+          console.log("No se encontró un token en el Local Storage")
+          return null; 
+        }
+      } catch (error) {
+        console.error("Error al extraer el token:", error);
+        return null;
       }
     }
 

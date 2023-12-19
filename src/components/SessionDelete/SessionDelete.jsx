@@ -7,21 +7,19 @@ export const SessionDelete = () => {
     const deleteCookie = async () => {
       try {
         // Obtén la cookie
-        const cookie = await window.cookieStore.get("coderCookie");
+        const tokenU = await window.localStorage.getItem("tokenUser")
     
         // Verifica si la cookie existe antes de intentar eliminarla
-        if (cookie) {
+        if (tokenU) {
           // Elimina la cookie estableciendo una fecha de expiración pasada
-          cookie.value = "";
-          cookie.expires = 0;
-          await window.cookieStore.set(cookie);
+          window.localStorage.clear()
     
-          console.log("Cookie eliminada exitosamente");
+          console.log("Token eliminada exitosamente");
         } else {
-          console.log("La cookie no existe");
+          console.log("El token no existe");
         }
       } catch (error) {
-        console.error("Error al eliminar la cookie:", error);
+        console.error("Error al eliminar el token:", error);
       }
     };
     
