@@ -25,8 +25,7 @@ export const SessionProfile = () => {
           headers: {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token.value}`
-          },
-          withCredentials: true
+          }
         });
 
         console.log(response);

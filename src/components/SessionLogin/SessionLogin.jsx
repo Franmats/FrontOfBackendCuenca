@@ -13,8 +13,7 @@ export const SessionLogin = () => {
       const response = await fetch('https://backendfinalcuenca-production.up.railway.app/api/session/login', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
-          'Authorization': 'Bearer yourAccessToken',
+          'Content-Type': 'application/json'
         },
         credentials: 'include',
         body: JSON.stringify(formData),
