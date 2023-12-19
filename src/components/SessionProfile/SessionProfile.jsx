@@ -24,9 +24,9 @@ export const SessionProfile = () => {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
-            "mode":"cors",
             'Authorization': `Bearer ${token.value}`
           },
+          mode:"cors",
           withCredentials: true
         });
 
