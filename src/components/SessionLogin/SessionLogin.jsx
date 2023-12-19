@@ -7,7 +7,7 @@ export const SessionLogin = () => {
   });
   const [responseMessage, setResponseMessage] = useState(null);
   const localStorageSetitem =async (item) => {
-    const set = window.localStorage.setItem("token",JSON.stringify(item.payload))
+    const set = window.localStorage.setItem("token",JSON.stringify(item))
     return set
   }
   const handleSubmit = async (e) => {
@@ -27,7 +27,7 @@ export const SessionLogin = () => {
         const responseData = await response.json();
 
         console.log("aaaaa",responseData);
-        localStorageSetitem(response)
+        await localStorageSetitem(response.payload)
         setResponseMessage(responseData.status);
       } else {
         const errorData = await response.json();
