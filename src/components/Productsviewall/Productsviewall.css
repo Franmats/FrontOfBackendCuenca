@@ -40,7 +40,16 @@
   .pagination {
     text-align: center;
   }
+  @media (max-width: 768px) {
 
+    .container {
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto;
+      
+    }
+
+
+  }
   
 /* Estilos para los enlaces de paginación */
 .pagination-link {

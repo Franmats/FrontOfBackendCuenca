@@ -101,6 +101,7 @@ header .containerfull .buttom {
         width: 600px;
         gap: 10px;
         margin-top:10px ;
+        background-color: aqua;
         justify-content: center;
         position:fixed;
         top: 25%;

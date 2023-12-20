@@ -60,7 +60,7 @@ export const Productsviewall =()=> {
       </div>
     ))}
 
-<div className="pagination">
+<div className="pagination-link">
         <button onClick={handlePreviousPage} disabled={page === 1}>
           Anterior
         </button>
