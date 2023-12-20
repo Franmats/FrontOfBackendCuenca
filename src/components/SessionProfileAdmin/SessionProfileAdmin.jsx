@@ -57,15 +57,21 @@ console.log('Error al cargar datos');
 
   return (
     <div>
-      <h1>Profile :{data.role}</h1>
-      <p>Age: {data.age}</p>
-      <p>Email: {data.email}</p>
-      <br />
-      <a href="/api/products/admin" > Gestion de Productos</a><br />
-      <a href="/api/carts/admin" > Gestion de Carritos</a><br />
-      <a href="/api/tickets/admin" > Gestion de Tickets</a><br />
-      <a href="/api/orders/admin"> Gestion de Ordenes</a><br />
-      <a href="/api/users/admin"> Gestion de Usuarios</a><br />
+      {data && data.role=="admin" && (
+        <div>
+          <h1>Profile :{data.role}</h1>
+          <p>Age: {data.age}</p>
+          <p>Email: {data.email}</p>
+          <br />
+          <a href="/api/products/admin" > Gestion de Productos</a><br />
+          <a href="/api/carts/admin" > Gestion de Carritos</a><br />
+          <a href="/api/tickets/admin" > Gestion de Tickets</a><br />
+          <a href="/api/orders/admin"> Gestion de Ordenes</a><br />
+          <a href="/api/users/admin"> Gestion de Usuarios</a><br />
+
+         </div>
+      ) }
+     
     </div>
   );
 };
