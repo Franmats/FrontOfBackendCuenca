@@ -78,37 +78,74 @@ header .containerfull .buttom {
         display: none;
     }
 
+
     header .containerphone{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
+        display: block;
         font-family: 'Nunito Sans', sans-serif;
     }
 
     header .containerphone .top{
         display: grid;
         margin-top:10px ;
-        grid-template-columns: 2fr 2fr;
+        grid-template-columns: 2fr 0.2fr;
         flex-direction: row;
     }
 
-
-    header .containerphone .top .items{
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-        justify-content: right;
-        padding-bottom: 0px;
-        
+    
+    header .containerphone .top .nav-toggle {
+        display: none;
     }
-    header .containerphone .top .items div {
-      height: 30px;
-      width: 30px;
+    header .containerphone .top .on{
+        display: flex;
+        flex-direction: column;
+        width: 600px;
+        gap: 10px;
+        margin-top:10px ;
+        justify-content: center;
+        position:fixed;
+        top: 25%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    header .containerphone .top .nav-toggle .menu{
+        display: flex;
+        flex-direction: column;
+        
+        gap: 30px;
+        align-items: center;
+    }
+    header .containerphone .top .nav-toggle .menu div a {
+        text-decoration: none;
+        color: black;
+    }
+    header .containerphone .top .nav-toggle .items{
+        padding-top: 20px;
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        flex-direction: row;
+    }
+    header .containerphone .top button {
+        border: none;
+        color: white;
+    }
+    header .containerphone .top .hambur {
+        height: 30px;
+        width: 30px;
+    }
+    header .containerphone .top .hambur img {
+        height: 100%;
+        width: 100%;
+    }
+    header .containerphone .top .nav-toggle .items div {
+      height: 50px;
+      width: 50px;
     }
     header .containerphone .top .items div img {
         height: 100%;
         width: 100%;
     }
+    
     header .containerphone .buttom {
       display: flex;
       flex-direction: column;
@@ -122,3 +159,5 @@ header .containerfull .buttom {
     }
 
 }
+
+

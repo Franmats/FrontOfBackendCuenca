@@ -80,7 +80,6 @@ export const ProductDetail = () => {
   const handleAddToCart = () => {
     const a = document.getElementById("counter")
     const b = a.textContent
-    console.log("sasdas",b)
     const cartRoute = `/api/cart/${data.user.cart}/product/${data.product._id}/cant/${b}`;
     navigate(cartRoute)
   };
