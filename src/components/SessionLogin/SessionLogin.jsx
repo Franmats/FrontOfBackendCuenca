@@ -6,25 +6,6 @@ export const SessionLogin = () => {
     password: '',
   });
   const [responseMessage, setResponseMessage] = useState(null);
-  const deleteCookie = async () => {
-    try {
-      const tokenU = await window.localStorage.getItem("tokenUser")
-    
-      if (tokenU) {
-      
-        window.localStorage.clear()
-  
-        console.log("Token eliminada exitosamente");
-      } else {
-        console.log("El token no existe");
-      }
-    } catch (error) {
-      console.error("Error al eliminar el token:", error);
-    }
-  };
-  
-  // Llama a la función para eliminar el token
-  deleteCookie();
   const localStorageSetitem =async (item) => {
     const set = window.localStorage.setItem("tokenUser",JSON.stringify(item))
     return set
